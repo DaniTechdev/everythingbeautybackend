@@ -9,6 +9,8 @@ const generateToken = (userId) => {
 };
 
 export const register = async (req, res) => {
+  console.log("Registering user with data:", req.body);
+
   try {
     const {
       email,

@@ -114,13 +114,50 @@ const userSchema = new mongoose.Schema(
     // Services (For Professionals)
     services: [
       {
-        name: String,
-        description: String,
-        price: Number,
-        duration: Number, // in minutes
+        name: {
+          type: String,
+          required: true,
+          trim: true,
+          maxlength: [100, "Service name cannot exceed 100 characters"],
+        },
+        description: {
+          type: String,
+          maxlength: [300, "Service description cannot exceed 300 characters"],
+        },
+        price: {
+          type: Number,
+          required: true,
+          min: 0,
+        },
+        duration: {
+          type: Number, // in minutes
+          required: true,
+          min: 15,
+          max: 480,
+        },
+        category: {
+          type: String,
+          required: true,
+          enum: ["hair", "nails", "skincare", "makeup", "other"],
+        },
+        subcategory: {
+          type: String,
+          trim: true,
+        },
+        isActive: {
+          type: Boolean,
+          default: true,
+        },
+        featured: {
+          type: Boolean,
+          default: false,
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
       },
     ],
-
     // Basic Ratings (For Future)
     rating: {
       average: {

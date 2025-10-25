@@ -1,5 +1,8 @@
-import cloudinary from "../../config/cloudinary.js";
-import User from "../models/User.js";
+// import cloudinary from "../../config/cloudinary.js";
+import cloudinary from "../config/cloudinary.js";
+
+// import User from "../models/User.js";
+import User from "../models/users.js";
 
 export const uploadDocuments = async (req, res) => {
   try {

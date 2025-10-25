@@ -4,7 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
-
+import uploadRoutes from "./routes/uploads.js";
+import adminRoutes from "./routes/admin.js";
 dotenv.config();
 
 const app = express();
@@ -22,6 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/upload", uploadRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

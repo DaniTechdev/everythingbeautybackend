@@ -7,6 +7,7 @@ import userRoutes from "./routes/users.js";
 import uploadRoutes from "./routes/uploads.js";
 import adminRoutes from "./routes/admin.js";
 import serviceRoutes from "./routes/services.js";
+import productRoutes from "./routes/products.js";
 dotenv.config();
 
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/services", serviceRoutes);
+app.use("/api/products", productRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

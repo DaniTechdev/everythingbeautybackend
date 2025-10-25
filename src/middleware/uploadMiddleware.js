@@ -42,3 +42,7 @@ export const uploadDocuments = upload.fields([
 
 // Middleware for single file uploads (for portfolio)
 export const uploadSingle = upload.single("file");
+
+export const uploadMultiple = upload.array("images", 10); // Max 10 images
+
+// export { uploadDocuments, uploadSingle };

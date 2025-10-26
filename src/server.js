@@ -8,6 +8,8 @@ import uploadRoutes from "./routes/uploads.js";
 import adminRoutes from "./routes/admin.js";
 import serviceRoutes from "./routes/services.js";
 import productRoutes from "./routes/products.js";
+import professionalRoutes from "./routes/professionals.js";
+
 dotenv.config();
 
 const app = express();
@@ -29,6 +31,7 @@ app.use("/api/upload", uploadRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/professionals", professionalRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

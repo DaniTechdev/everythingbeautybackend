@@ -1,5 +1,6 @@
 import Product from "../models/Product.js";
 import User from "../models/users.js";
+import mongoose from "mongoose";
 
 // import cloudinary from "../../config/cloudinary.js";
 import cloudinary from "../config/cloudinary.js";
@@ -77,6 +78,8 @@ export const createProduct = async (req, res) => {
   try {
     const user = await User.findById(req.userId);
 
+    console.log("user:", user);
+
     if (user.role !== "hair_vendor") {
       return res.status(403).json({
         success: false,
@@ -118,7 +121,12 @@ export const updateProduct = async (req, res) => {
   try {
     const { productId } = req.params;
 
+    console.log("productId:", productId);
+    console.log("req.userID:", req.userId);
+
     const product = await Product.findById(productId);
+
+    console.log("product:", product);
 
     if (!product) {
       return res.status(404).json({
@@ -127,7 +135,7 @@ export const updateProduct = async (req, res) => {
       });
     }
 
-    if (product.vendor.toString() !== req.userId) {
+    if (product.vendor.toString() !== req.userId.toString()) {
       return res.status(403).json({
         success: false,
         error: "Access denied",
@@ -159,6 +167,8 @@ export const deleteProduct = async (req, res) => {
   try {
     const { productId } = req.params;
 
+    console.log("Deleting productId:", productId);
+
     const product = await Product.findById(productId);
 
     if (!product) {
@@ -168,7 +178,7 @@ export const deleteProduct = async (req, res) => {
       });
     }
 
-    if (product.vendor.toString() !== req.userId) {
+    if (product.vendor.toString() !== req.userId.toString()) {
       return res.status(403).json({
         success: false,
         error: "Access denied",
@@ -212,7 +222,7 @@ export const updateProductStatus = async (req, res) => {
       });
     }
 
-    if (product.vendor.toString() !== req.userId) {
+    if (product.vendor.toString() !== req.userId.toString()) {
       return res.status(403).json({
         success: false,
         error: "Access denied",
@@ -391,7 +401,7 @@ export const getProductStats = async (req, res) => {
   try {
     const stats = await Product.aggregate([
       {
-        $match: { vendor: mongoose.Types.ObjectId(req.userId) },
+        $match: { vendor: new mongoose.Types.ObjectId(req.userId) },
       },
       {
         $group: {

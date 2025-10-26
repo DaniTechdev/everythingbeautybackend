@@ -9,6 +9,7 @@ import adminRoutes from "./routes/admin.js";
 import serviceRoutes from "./routes/services.js";
 import productRoutes from "./routes/products.js";
 import professionalRoutes from "./routes/professionals.js";
+import marketplaceRoutes from "./routes/marketplace.js";
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/professionals", professionalRoutes);
+app.use("/api/marketplace", marketplaceRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

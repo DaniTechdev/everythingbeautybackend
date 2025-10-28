@@ -10,6 +10,8 @@ import serviceRoutes from "./routes/services.js";
 import productRoutes from "./routes/products.js";
 import professionalRoutes from "./routes/professionals.js";
 import marketplaceRoutes from "./routes/marketplace.js";
+import cartRoutes from "./routes/cart.js";
+// import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -34,6 +36,8 @@ app.use("/api/services", serviceRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/professionals", professionalRoutes);
 app.use("/api/marketplace", marketplaceRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/cart", cartRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

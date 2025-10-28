@@ -206,6 +206,14 @@ const productSchema = new mongoose.Schema(
       },
     ],
 
+    //product order
+    name: String,
+    price: Number,
+    vendorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    stock: Number,
     // Timestamps
     publishedAt: Date,
   },
@@ -271,4 +279,14 @@ productSchema.statics.findByCategory = function (category, limit = 20) {
     .sort({ featured: -1, createdAt: -1 });
 };
 
-export default mongoose.model("Product", productSchema);
+// export default mongoose.model("Product", productSchema);
+
+// Safe model definition
+let Product;
+try {
+  Product = mongoose.model("Product");
+} catch {
+  Product = mongoose.model("Product", productSchema);
+}
+
+export default Product;

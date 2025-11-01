@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// models/Order.js - Enhanced for multi-vendor
 const orderSchema = new mongoose.Schema(
   {
     orderId: {
@@ -12,7 +13,7 @@ const orderSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    // Enhanced for multi-vendor support
+    // Split order by vendor
     vendorOrders: [
       {
         vendorId: {

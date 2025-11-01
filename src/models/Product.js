@@ -209,10 +209,10 @@ const productSchema = new mongoose.Schema(
     //product order
     name: String,
     price: Number,
-    vendorId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
+    // vendorId: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "User",
+    // },
     stock: Number,
     // Timestamps
     publishedAt: Date,

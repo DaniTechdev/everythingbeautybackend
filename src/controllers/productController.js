@@ -2,6 +2,9 @@ import Product from "../models/Product.js";
 import User from "../models/users.js";
 import mongoose from "mongoose";
 
+//This product controller handles all product related operations to the Vendor dashboard uploads,
+// edits, deletions, status updates, image uploads, and statistics.
+
 // import cloudinary from "../../config/cloudinary.js";
 import cloudinary from "../config/cloudinary.js";
 // Get vendor's products
